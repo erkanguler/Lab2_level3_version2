@@ -21,8 +21,10 @@ static class App
 
             string? input = Console.ReadLine();
 
-            if (String.IsNullOrEmpty(input))
+            if (String.IsNullOrWhiteSpace(input))
                 continue;
+
+            input = input!.Trim();
 
             if (IsTokenEqual(input!, "q"))
                 Environment.Exit(0);
@@ -38,12 +40,12 @@ static class App
                     while (true)
                     {
                         Console.Write("Enter a Category: ");
-                        input = Console.ReadLine()!.Trim();
+                        input = Console.ReadLine();
 
-                        if (String.IsNullOrEmpty(input))
+                        if (String.IsNullOrWhiteSpace(input))
                             continue;
 
-                        categoryName = input;
+                        categoryName = input!.Trim();
 
                         if (IsTokenEqual(categoryName!, "q"))
                             goto GoToStart;
@@ -55,12 +57,12 @@ static class App
                     while (true)
                     {
                         Console.Write("Enter a Product Name: ");
-                        input = Console.ReadLine()!.Trim();
+                        input = Console.ReadLine();
 
-                        if (String.IsNullOrEmpty(input))
+                        if (String.IsNullOrWhiteSpace(input))
                             continue;
 
-                        productName = input;
+                        productName = input!.Trim();
 
                         break;
                     }
@@ -87,10 +89,11 @@ static class App
                 {
                     Console.Write("\nEnter a Product Name: ");
                     string? prodName = Console.ReadLine();
-                    prodName = prodName!.Trim();
 
-                    if (String.IsNullOrEmpty(prodName))
+                    if (String.IsNullOrWhiteSpace(prodName))
                         continue;
+
+                    prodName = prodName!.Trim();
 
                     if (productList.Contains(prodName!))
                         productList.ColorPrintProducts(prodName!);
